@@ -34,9 +34,9 @@
 ### Association
 
 - belongs_to: user
-- belongs_to: item
+- belongs_to: order
 
-## orders テーブル
+## Addresses テーブル
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
@@ -47,12 +47,22 @@
 | address               | string     | null: false                    |
 | building              | string     |                                |
 | telephone_number      | string     | null: false                    |
+
+### Association
+
+- has_one: order
+
+## orders テーブル
+
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
 | user                  | references | null: false, foreign_key: true |
+| address               | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to: user
+- belongs_to: adress
 - has_many: items
-
 
 
