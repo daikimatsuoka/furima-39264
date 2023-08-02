@@ -22,13 +22,13 @@
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| item_name             | text       | null: false                    |
+| item_name             | string     | null: false                    |
 | description_item      | text       | null: false                    |
 | category_id           | integer    | null: false                    |
 | condition_id          | integer    | null: false                    |
-| shipping_charges_id   | integer    | null: false                    |
+| shipping_charge_id    | integer    | null: false                    |
 | region_id             | integer    | null: false                    |
-| number_of_days_id     | integer    | null: false                    |
+| number_of_day_id      | integer    | null: false                    |
 | price                 | integer    | null: false                    |
 | user                  | references | null: false, foreign_key: true |
 
@@ -42,7 +42,7 @@
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
 | postcode              | string     | null: false                    |
-| prefecture            | string     | null: false                    |
+| region_id             | integer    | null: false                    |
 | municipalities        | string     | null: false                    |
 | address               | string     | null: false                    |
 | building              | string     |                                |
