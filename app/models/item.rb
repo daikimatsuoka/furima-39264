@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   validates :condition_id, presence: true
   validates :shipping_charges_id, presence: true
   validates :region_id, presence: true
+  validates :number_of_day_id, presence: true
   validates :price, presence: true
   validates :item_name, presence: true
 
