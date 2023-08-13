@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model:@item , url: new_item_path, local: true do |f| %>
+    <%= form_with model:@item , url: items_path , method: :post, local: true do |f| %>
 
     <%= render partial: 'shared/error_messages', locals: { model: f.object } %>
 
@@ -79,7 +79,7 @@
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:number_of_day, NumberOfDay.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:number_of_day_id, NumberOfDay.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
