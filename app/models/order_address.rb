@@ -6,10 +6,9 @@ class OrderAddress
     validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :municipalities
     validates :address
-    validates :telephone_number, format: {with: /\A[0-9]+\z/}, numericality: { greater_than_or_equal_to: 10, less_than_or_equal_to: 11}
-    validates :order_id
+    validates :telephone_number, format: { with: /\A[0-9]+\z/},
+    length: { minimum: 10, maximum: 11, message: "Telephone number must be less than or equal to 11" }    
     validates :user_id
-    validates :item_id 
   end
 
   def save
