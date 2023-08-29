@@ -18,5 +18,6 @@ class Item < ApplicationRecord
   belongs_to :number_of_day
 
   belongs_to :user
+  has_one :order
   has_one_attached :item_image
 end
