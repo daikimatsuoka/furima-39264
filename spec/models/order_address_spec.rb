@@ -4,7 +4,8 @@ RSpec.describe OrderAddress, type: :model do
   describe '商品購入機能' do
     before do
       user = FactoryBot.create(:user)
-      @order_address = FactoryBot.build(:order_address, user_id: user.id)
+      item = FactoryBot.create(:item)
+      @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
     end
 
     context '内容に問題ない場合' do
@@ -55,8 +56,14 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include "Telephone number can't be blank"
       end
 
-      it 'telephone_numberは10桁以上11桁以内でなければ保存できない' do
+      it 'telephone_numberが9桁以下では保存できない' do
         @order_address.telephone_number = '090123456'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone number Telephone number must be less than or equal to 11'
+      end
+
+      it 'telephone_numberは12桁以上では保存できない' do
+        @order_address.telephone_number = '090123456789'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include 'Telephone number Telephone number must be less than or equal to 11'
       end
@@ -71,6 +78,18 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include "Token can't be blank"
+      end
+
+      it 'userが紐付いていないと登録できない' do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "User can't be blank"
+      end
+
+      it 'itemが紐付いていないと登録できない' do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "Item can't be blank"
       end
     end
   end
