@@ -16,91 +16,91 @@ RSpec.describe Item, type: :model do
       it 'item_image が空では登録できない' do
         @item.item_image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item image can't be blank"
+        expect(@item.errors.full_messages).to include "商品画像を入力してください"
       end
 
       it 'item_name が空では登録できない' do
         @item.item_name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item name can't be blank"
+        expect(@item.errors.full_messages).to include "商品名を入力してください"
       end
 
       it 'item_nameが40文字より大きければ登録できない' do
         @item.item_name = Faker::Lorem.characters(number: 41)
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Item name is too long (maximum is 40 characters)'
+        expect(@item.errors.full_messages).to include "商品名は40文字以内で入力してください"
       end
 
       it 'description_itemが空では登録できない' do
         @item.description_item = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Description item can't be blank"
+        expect(@item.errors.full_messages).to include "商品説明を入力してください"
       end
 
       it 'description_itemが1000文字より大きければ登録できない' do
         @item.description_item = Faker::Lorem.characters(number: 1001)
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Description item is too long (maximum is 1000 characters)'
+        expect(@item.errors.full_messages).to include '商品説明は1000文字以内で入力してください'
       end
 
       it 'category_idが初期値では登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category can't be blank"
+        expect(@item.errors.full_messages).to include "カテゴリーを入力してください"
       end
 
       it 'condition_idが初期値では登録できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Condition can't be blank"
+        expect(@item.errors.full_messages).to include "商品の状態を入力してください"
       end
 
       it 'shipping_charges_idが初期値では登録できない' do
         @item.shipping_charges_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Shipping charges can't be blank"
+        expect(@item.errors.full_messages).to include "配送料の負担を入力してください"
       end
 
       it 'region_idが初期値では登録できない' do
         @item.region_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Region can't be blank"
+        expect(@item.errors.full_messages).to include "地域を入力してください"
       end
 
       it 'number_of_dayが初期値では登録できない' do
         @item.number_of_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Number of day can't be blank"
+        expect(@item.errors.full_messages).to include "発送までの日数を入力してください"
       end
 
       it 'priceが空では登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price can't be blank"
+        expect(@item.errors.full_messages).to include "価格を入力してください"
       end
 
       it 'priceが300未満では登録できない' do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price must be greater than or equal to 300'
+        expect(@item.errors.full_messages).to include '価格は300以上の値にしてください'
       end
 
       it 'priceが9999999より大きければ登録できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price must be less than or equal to 9999999'
+        expect(@item.errors.full_messages).to include '価格は9999999以下の値にしてください'
       end
 
       it 'priceは半角数字以外を含むとできない' do
         @item.price = 'test'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is not a number'
+        expect(@item.errors.full_messages).to include '価格は数値で入力してください'
       end
 
       it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include 'User must exist'
+        expect(@item.errors.full_messages).to include '出品者の情報を入力してください'
       end
     end
   end
