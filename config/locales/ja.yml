@@ -18,6 +18,7 @@ ja:
         region_id: 地域
         number_of_day_id: 発送までの日数
         price: 価格
+        user: 出品者の情報
   activemodel:
     attributes:
       order_address:
