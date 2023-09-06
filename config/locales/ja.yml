@@ -29,4 +29,5 @@ ja:
         building: 建物名
         telephone_number: 電話番号
         token: クレジットカード情報
- 
+        user_id: 購入者の情報
+        item_id: 商品情報
