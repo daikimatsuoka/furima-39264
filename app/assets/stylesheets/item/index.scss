@@ -278,8 +278,11 @@ a {
 
 .item-info {
   background-color: #FFF;
-  color: black;
   padding: 1vw;
+}
+
+.item-info a{
+  color: black;
 }
 
 .item-name {
