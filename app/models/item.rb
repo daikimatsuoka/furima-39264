@@ -21,4 +21,8 @@ class Item < ApplicationRecord
   has_one :order
   has_one_attached :item_image
   has_many :items
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end
