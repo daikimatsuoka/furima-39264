@@ -130,7 +130,7 @@
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div>
-              <% end%>
+              <% end %>
 
             </div>
             <div class='item-info'>
@@ -140,8 +140,9 @@
               <div class='item-price'>
                 <span><%= item.price %>円<br><%= item.shipping_charges.name %></span>
                 <div class='star-btn'>
-                  <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
+                  <div id="like-btn<%= item.id %>">
+                    <%= render partial: "likes/like", locals: { item: item } %>
+                  </div>
                 </div>
               </div>
             </div>
